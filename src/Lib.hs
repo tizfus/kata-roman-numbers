@@ -11,8 +11,7 @@ fromNumber 100 = "C"
 fromNumber 500 = "D"
 fromNumber 1000 = "M"
 
-fromNumber 2 = "II"
-fromNumber 3 = "III"
 fromNumber 4 = "IV"
+fromNumber number = take number $ repeat 'I' 
 
 
