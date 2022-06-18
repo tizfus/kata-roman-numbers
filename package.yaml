@@ -46,3 +46,5 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - kata-roman-numbers
+    - tasty
+    - tasty-hunit

@@ -1,2 +1,7 @@
+import Test.Tasty (defaultMain, testGroup)
+import Test.Tasty.HUnit (assertEqual, testCase)
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = defaultMain $ testGroup "Roman numbers tests" $ [
+        testCase "green test" (assertEqual "should be green," 1 1)
+    ]
