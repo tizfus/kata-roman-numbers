@@ -20,21 +20,21 @@ fromNumber 9 = drawOne ++ drawTen
 fromNumber 90 = drawTen ++ drawOneHundred
 fromNumber 900 = drawOneHundred ++ drawOneThousand
 
-fromNumber number
-    | (number > 1000) = drawOneThousand ++ (fromNumber $ number - 1000)
-    | (number > 500) = drawFiveHundred ++ (fromNumber $ number - 500)
-    | (number > 100) = drawOneHundred ++ (fromNumber $ number - 100)
-    | (number > 50) = drawFifty ++ (fromNumber $ number - 50)
-    | (number > 10) = drawTen ++ (fromNumber $ number - 10)
-    | (number > 5) = let n = takeMinorNumeral number in fromNumber n ++ drawOnes (number - n)
-    | otherwise = drawOnes number
+fromNumber number =
+    let 
+        numeral = takeMinorNumeral number
+        reminder = number - numeral
+    in fromNumber numeral ++ 
+        if isZero reminder then [] else fromNumber reminder
 
 takeMinorNumeral :: Int -> Int
 takeMinorNumeral number =
-    let romanNumeral = [1000, 500, 100, 50, 10, 5]
+    let romanNumeral = [1000, 500, 100, 50, 10, 5, 1]
     in
         head $ filter (number > ) romanNumeral
 
+isZero :: Int -> Bool
+isZero = (== 0)
 
 drawOne = "I"
 drawOnes = draws drawOne
