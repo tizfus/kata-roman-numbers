@@ -3,48 +3,48 @@ module Lib
     ) where
 
 fromNumber :: Int -> String
-fromNumber 1 = drawI
-fromNumber 5 = drawV
-fromNumber 10 = drawX
-fromNumber 50 = drawL
-fromNumber 100 = drawC
-fromNumber 500 = drawD
-fromNumber 1000 = drawM
+fromNumber 1 = drawOne
+fromNumber 5 = drawFive
+fromNumber 10 = drawTen
+fromNumber 50 = drawFifty
+fromNumber 100 = drawOneHundred
+fromNumber 500 = drawFiveHundred
+fromNumber 1000 = drawOneThousand
 
-fromNumber 4 = drawI ++ drawV
-fromNumber 40 = drawX ++ drawL
-fromNumber 400 = drawC ++ drawD
-fromNumber 4000 = drawMs 4
+fromNumber 4 = drawOne ++ drawFive
+fromNumber 40 = drawTen ++ drawFifty
+fromNumber 400 = drawOneHundred ++ drawFiveHundred
+fromNumber 4000 = drawOneThousands 4
 
-fromNumber 9 = drawI ++ drawX
-fromNumber 90 = drawX ++ drawC
-fromNumber 900 = drawC ++ drawM
+fromNumber 9 = drawOne ++ drawTen
+fromNumber 90 = drawTen ++ drawOneHundred
+fromNumber 900 = drawOneHundred ++ drawOneThousand
 
 fromNumber number
-    | (number > 1000) = drawM ++ (fromNumber $ number - 1000)
-    | (number > 500) = drawD ++ (fromNumber $ number - 500)
-    | (number > 100) = drawC ++ (fromNumber $ number - 100)
-    | (number > 50) = drawL ++ (fromNumber $ number - 50)
-    | (number > 10) = drawX ++ (fromNumber $ number - 10)
-    | (number > 5) = drawV ++ drawIs (number - 5)
-    | otherwise = drawIs number
+    | (number > 1000) = drawOneThousand ++ (fromNumber $ number - 1000)
+    | (number > 500) = drawFiveHundred ++ (fromNumber $ number - 500)
+    | (number > 100) = drawOneHundred ++ (fromNumber $ number - 100)
+    | (number > 50) = drawFifty ++ (fromNumber $ number - 50)
+    | (number > 10) = drawTen ++ (fromNumber $ number - 10)
+    | (number > 5) = drawFive ++ drawOnes (number - 5)
+    | otherwise = drawOnes number
 
-drawI = "I"
-drawIs = draws drawI
+drawOne = "I"
+drawOnes = draws drawOne
 
-drawV = "V"
+drawFive = "V"
 
-drawX = "X"
-drawXs = draws drawX
+drawTen = "X"
+drawTens = draws drawTen
 
-drawL = "L"
+drawFifty = "L"
 
-drawD = "D"
+drawFiveHundred = "D"
 
-drawC = "C"
+drawOneHundred = "C"
 
-drawM = "M"
-drawMs = draws drawM
+drawOneThousand = "M"
+drawOneThousands = draws drawOneThousand
 
 draws :: String -> Int -> String 
 draws letter amount = concat $ take amount $ repeat letter 
