@@ -12,13 +12,13 @@ fromNumber 500 = drawD
 fromNumber 1000 = drawM
 
 fromNumber 4 = drawI ++ drawV
-fromNumber 40 = drawI ++ drawL
-fromNumber 400 = drawI ++ drawD
+fromNumber 40 = drawX ++ drawL
+fromNumber 400 = drawC ++ drawD
 fromNumber 4000 = drawMs 4
 
 fromNumber 9 = drawI ++ drawX
-fromNumber 90 = drawI ++ drawC
-fromNumber 900 = drawI ++ drawM
+fromNumber 90 = drawX ++ drawC
+fromNumber 900 = drawC ++ drawM
 
 fromNumber number
     | (number > 1000) = drawM ++ (fromNumber $ number - 1000)

@@ -47,14 +47,14 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
 
         , testCase "count 4, 40, 400, 4000" $ do
             assertSymbol "IV" $ fromNumber 4
-            assertSymbol "IL" $ fromNumber 40
-            assertSymbol "ID" $ fromNumber 400
+            assertSymbol "XL" $ fromNumber 40
+            assertSymbol "CD" $ fromNumber 400
             assertSymbol "MMMM" $ fromNumber 4000
 
         , testCase "count 9, 90, 900" $ do
             assertSymbol "IX" $ fromNumber 9
-            assertSymbol "IC" $ fromNumber 90
-            assertSymbol "IM" $ fromNumber 900
+            assertSymbol "XC" $ fromNumber 90
+            assertSymbol "CM" $ fromNumber 900
     ]
 
 
