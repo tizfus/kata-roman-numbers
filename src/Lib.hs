@@ -11,13 +11,15 @@ fromNumber 100 = "C"
 fromNumber 500 = [drawD]
 fromNumber 1000 = [drawM]
 
-fromNumber 4 = drawI : [drawV]
-fromNumber 40 = drawI : [drawL]
-fromNumber 400 = drawI : [drawD]
+fromNumber 4 = [drawI, drawV]
+fromNumber 40 = [drawI, drawL]
+fromNumber 400 = [drawI, drawD]
 fromNumber 4000 = drawMs 4
 
-fromNumber 4 = fromNumber 1 ++ fromNumber 5
-fromNumber 9 = fromNumber 1 ++ fromNumber 10
+fromNumber 9 = [drawI , drawX]
+fromNumber 90 = [drawI , drawC]
+fromNumber 900 = [drawI , drawM]
+
 fromNumber 19 = fromNumber 1 ++ fromNumber 20
 
 fromNumber number
@@ -27,16 +29,18 @@ fromNumber number
     | otherwise = "WRONG_VALUE"
 
 drawI = 'I'
-drawIs amount = take amount $ repeat 'I'
+drawIs = draws drawI
 
 drawV = 'V'
 
 drawX = 'X'
-drawXs amount = take amount $ repeat 'X'
+drawXs = draws drawX
 
 drawL = 'L'
 
 drawD = 'D'
+
+drawC = 'C'
 
 drawM = 'M'
 drawMs = draws drawM
