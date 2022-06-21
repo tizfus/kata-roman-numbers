@@ -11,13 +11,12 @@ fromNumber 100 = "C"
 fromNumber 500 = "D"
 fromNumber 1000 = "M"
 
-fromNumber 2 = "II"
-fromNumber 3 = "III"
 fromNumber 4 = fromNumber 1 ++ fromNumber 5
 fromNumber 9 = fromNumber 1 ++ fromNumber 10
 fromNumber 19 = fromNumber 1 ++ fromNumber 20
 
 fromNumber number
+    | (number > 1) && (number < 5) = fromNumber 1 ++ (fromNumber $ number - 1)
     | (number > 5) && (number < 10) = fromNumber 5 ++ (fromNumber $ number - 5)
     | (number > 10) = fromNumber 10 ++ (fromNumber $ number - 10)
     | otherwise = "="
