@@ -14,13 +14,13 @@ fromNumber 900 = drawOneHundred ++ drawOneThousand
 
 fromNumber number =
     let 
-        (romanSymbol, decimalNumber) = takeLowerRomanNumber number
+        (romanSymbol, decimalNumber) = takeEgualOrLowerRomanNumber number
         reminder = number - decimalNumber
     in romanSymbol ++ 
         if isZero reminder then [] else fromNumber reminder
 
-takeLowerRomanNumber :: Int -> (String, Int)
-takeLowerRomanNumber number =
+takeEgualOrLowerRomanNumber :: Int -> (String, Int)
+takeEgualOrLowerRomanNumber number =
         head 
         $ filter ((number >=) . snd ) 
         $ romanNumbers
