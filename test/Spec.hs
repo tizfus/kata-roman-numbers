@@ -1,3 +1,4 @@
+import Control.Monad(forM_)
 import Lib(fromNumber)
 import Test.Tasty (defaultMain, testGroup)
 import Test.Tasty.HUnit (assertEqual, testCase, Assertion)
@@ -14,26 +15,29 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "M" $ fromNumber 1000
 
         , testCase "count to 20" $ do
-            assertSymbol "I" $ fromNumber 1
-            assertSymbol "II" $ fromNumber 2
-            assertSymbol "III" $ fromNumber 3
-            assertSymbol "IV" $ fromNumber 4
-            assertSymbol "V" $ fromNumber 5
-            assertSymbol "VI" $ fromNumber 6
-            assertSymbol "VII" $ fromNumber 7
-            assertSymbol "VIII" $ fromNumber 8
-            assertSymbol "IX" $ fromNumber 9
-            assertSymbol "X" $ fromNumber 10
-            assertSymbol "XI" $ fromNumber 11
-            assertSymbol "XII" $ fromNumber 12
-            assertSymbol "XIII" $ fromNumber 13
-            assertSymbol "XIV" $ fromNumber 14
-            assertSymbol "XV" $ fromNumber 15
-            assertSymbol "XVI" $ fromNumber 16
-            assertSymbol "XVII" $ fromNumber 17
-            assertSymbol "XVIII" $ fromNumber 18
-            assertSymbol "XIX" $ fromNumber 19
-            assertSymbol "XX" $ fromNumber 20
+            let numbers = [
+                    ("I", 1)
+                    , ("II", 2)
+                    , ("III", 3)
+                    , ("IV", 4)
+                    , ("V", 5)
+                    , ("VI", 6)
+                    , ("VII", 7)
+                    , ("VIII", 8)
+                    , ("IX", 9)
+                    , ("X", 10)
+                    , ("XI", 11)
+                    , ("XII", 12)
+                    , ("XIII", 13)
+                    , ("XIV", 14)
+                    , ("XV", 15)
+                    , ("XVI", 16)
+                    , ("XVII", 17)
+                    , ("XVIII", 18)
+                    , ("XIX", 19)
+                    , ("XX", 20)
+                    ]
+            forM_ numbers (\(expected, number) -> assertSymbol expected $ fromNumber number)
 
         , testCase "count 4, 40, 400, 4000" $ do
             assertSymbol "IV" $ fromNumber 4
