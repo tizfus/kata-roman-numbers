@@ -18,8 +18,11 @@ fromNumber number =
 takeEgualOrLowerRomanNumber :: Int -> RomanNumber
 takeEgualOrLowerRomanNumber number =
     head 
-    $ filter ((number >=) . decimal ) 
+    $ filter (isEqualOrLower number) 
     $ romanNumbers
+
+isEqualOrLower :: Int -> RomanNumber -> Bool
+isEqualOrLower number = (number >=) . decimal
 
 romanNumbers :: [RomanNumber]
 romanNumbers = 
