@@ -19,7 +19,7 @@ fromNumber number
     | (number > 1) && (number < 5) = fromNumber 1 ++ (fromNumber $ number - 1)
     | (number > 5) && (number < 10) = fromNumber 5 ++ (fromNumber $ number - 5)
     | (number > 10) = fromNumber 10 ++ (fromNumber $ number - 10)
-    | otherwise = "="
+    | otherwise = "WRONG_VALUE"
 
 
 
