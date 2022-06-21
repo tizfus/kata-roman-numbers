@@ -3,15 +3,6 @@ module Lib
     ) where
 
 fromNumber :: Int -> String
-fromNumber 4 = drawOne ++ drawFive
-fromNumber 40 = drawTen ++ drawFifty
-fromNumber 400 = drawOneHundred ++ drawFiveHundred
-fromNumber 4000 = drawOneThousands 4
-
-fromNumber 9 = drawOne ++ drawTen
-fromNumber 90 = drawTen ++ drawOneHundred
-fromNumber 900 = drawOneHundred ++ drawOneThousand
-
 fromNumber number =
     let 
         (romanSymbol, decimalNumber) = takeEgualOrLowerRomanNumber number
@@ -30,12 +21,19 @@ isZero = (== 0)
 
 romanNumbers :: [(String, Int)]
 romanNumbers = [
+    (drawOneThousands 4, 4000),
     (drawOneThousand, 1000),
+    (drawOneHundred ++ drawOneThousand, 900),
     (drawFiveHundred, 500),
+    (drawOneHundred ++ drawFiveHundred, 400),
     (drawOneHundred, 100),
+    (drawTen ++ drawOneHundred, 90),
     (drawFifty, 50),
+    (drawTen ++ drawFifty, 40),
     (drawTen, 10),
+    (drawOne ++ drawTen, 9),
     (drawFive, 5),
+    (drawOne ++ drawFive, 4),
     (drawOne, 1)
     ]
 
