@@ -35,6 +35,8 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "IXX" $ fromNumber 19
             assertSymbol "XX" $ fromNumber 20
 
+        , testCase "should not repeat 'X' more than three time" $ do
+            assertSymbol "XL" $ fromNumber 40
     ]
 
 
