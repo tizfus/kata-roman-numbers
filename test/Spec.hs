@@ -13,7 +13,7 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "D" $ fromNumber 500
             assertSymbol "M" $ fromNumber 1000
 
-        , testCase "count to 10" $ do
+        , testCase "count to 20" $ do
             assertSymbol "I" $ fromNumber 1
             assertSymbol "II" $ fromNumber 2
             assertSymbol "III" $ fromNumber 3
