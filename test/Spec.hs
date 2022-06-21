@@ -32,7 +32,7 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "XVI" $ fromNumber 16
             assertSymbol "XVII" $ fromNumber 17
             assertSymbol "XVIII" $ fromNumber 18
-            assertSymbol "IXX" $ fromNumber 19
+            assertSymbol "XIX" $ fromNumber 19
             assertSymbol "XX" $ fromNumber 20
 
         , testCase "count 4, 40, 400, 4000" $ do
