@@ -6,12 +6,12 @@ import Data.List (sortBy)
 import Data.Function (on)
 
 fromNumber :: Int -> String
+fromNumber 0 = []
 fromNumber number =
     let 
         (romanSymbol, decimalNumber) = takeEgualOrLowerRomanNumber number
         reminder = number - decimalNumber
-    in romanSymbol ++ 
-        if isZero reminder then [] else fromNumber reminder
+    in romanSymbol ++ fromNumber reminder
 
 takeEgualOrLowerRomanNumber :: Int -> (String, Int)
 takeEgualOrLowerRomanNumber number =
