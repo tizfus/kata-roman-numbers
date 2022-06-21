@@ -5,46 +5,45 @@ module Lib
 import Data.List (sortBy)
 import Data.Function (on)
 
+data RomanNumber = RomanNumber  { symbols :: String, decimal :: Int }
+
 fromNumber :: Int -> String
 fromNumber 0 = []
 fromNumber number =
     let 
-        (romanSymbol, decimalNumber) = takeEgualOrLowerRomanNumber number
-        reminder = number - decimalNumber
-    in romanSymbol ++ fromNumber reminder
+        romanNumber = takeEgualOrLowerRomanNumber number
+        reminder = number - decimal romanNumber
+    in symbols romanNumber ++ fromNumber reminder
 
-takeEgualOrLowerRomanNumber :: Int -> (String, Int)
+takeEgualOrLowerRomanNumber :: Int -> RomanNumber
 takeEgualOrLowerRomanNumber number =
     head 
-    $ filter ((number >=) . snd ) 
+    $ filter ((number >=) . decimal ) 
     $ romanNumbers
 
-isZero :: Int -> Bool
-isZero = (== 0)
-
-romanNumbers :: [(String, Int)]
+romanNumbers :: [RomanNumber]
 romanNumbers = 
     sort $ symbols ++ specialNumbers
     where 
         symbols = [
-            ("MMMM", 4000),
-            ("M", 1000),
-            ("D", 500),
-            ("C", 100),
-            ("L", 50),
-            ("X", 10),
-            ("V", 5),
-            ("I", 1)
+            RomanNumber "MMMM" 4000,
+            RomanNumber "M" 1000,
+            RomanNumber "D" 500,
+            RomanNumber "C" 100,
+            RomanNumber "L" 50,
+            RomanNumber "X" 10,
+            RomanNumber "V" 5,
+            RomanNumber "I" 1
             ]
 
         specialNumbers = [
-            ("CM", 900),
-            ("CD", 400),
-            ("XC", 90),
-            ("XL", 40),
-            ("IX", 9),
-            ("IV", 4)
+            RomanNumber "CM" 900,
+            RomanNumber "CD" 400,
+            RomanNumber "XC" 90,
+            RomanNumber "XL" 40,
+            RomanNumber "IX" 9,
+            RomanNumber "IV" 4
             ]
 
-sort :: [(String, Int)] -> [(String, Int)]
-sort = sortBy (flip compare `on` snd)
+sort :: [RomanNumber] -> [RomanNumber]
+sort = sortBy (flip compare `on` decimal)
