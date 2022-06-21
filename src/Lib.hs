@@ -21,38 +21,18 @@ isZero = (== 0)
 
 romanNumbers :: [(String, Int)]
 romanNumbers = [
-    (drawOneThousands 4, 4000),
-    (drawOneThousand, 1000),
-    (drawOneHundred ++ drawOneThousand, 900),
-    (drawFiveHundred, 500),
-    (drawOneHundred ++ drawFiveHundred, 400),
-    (drawOneHundred, 100),
-    (drawTen ++ drawOneHundred, 90),
-    (drawFifty, 50),
-    (drawTen ++ drawFifty, 40),
-    (drawTen, 10),
-    (drawOne ++ drawTen, 9),
-    (drawFive, 5),
-    (drawOne ++ drawFive, 4),
-    (drawOne, 1)
+    ("MMMM", 4000),
+    ("M", 1000),
+    ("CM", 900),
+    ("D", 500),
+    ("CD", 400),
+    ("C", 100),
+    ("XC", 90),
+    ("L", 50),
+    ("XL", 40),
+    ("X", 10),
+    ("IX", 9),
+    ("V", 5),
+    ("IV", 4),
+    ("I", 1)
     ]
-
-drawOne = "I"
-drawOnes = draws drawOne
-
-drawFive = "V"
-
-drawTen = "X"
-drawTens = draws drawTen
-
-drawFifty = "L"
-
-drawFiveHundred = "D"
-
-drawOneHundred = "C"
-
-drawOneThousand = "M"
-drawOneThousands = draws drawOneThousand
-
-draws :: String -> Int -> String 
-draws letter amount = concat $ take amount $ repeat letter 
