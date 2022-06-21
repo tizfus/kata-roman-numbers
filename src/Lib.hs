@@ -23,9 +23,7 @@ fromNumber 900 = drawI ++ drawM
 fromNumber number
     | (number > 10) = drawX ++ (fromNumber $ number - 10)
     | (number > 5) = drawV ++ drawIs (number - 5)
-    | (number > 1) = drawIs number
-    
-    | otherwise = "WRONG_VALUE"
+    | otherwise = drawIs number
 
 drawI = "I"
 drawIs = draws drawI
