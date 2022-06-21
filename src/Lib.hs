@@ -3,14 +3,6 @@ module Lib
     ) where
 
 fromNumber :: Int -> String
-fromNumber 1 = drawOne
-fromNumber 5 = drawFive
-fromNumber 10 = drawTen
-fromNumber 50 = drawFifty
-fromNumber 100 = drawOneHundred
-fromNumber 500 = drawFiveHundred
-fromNumber 1000 = drawOneThousand
-
 fromNumber 4 = drawOne ++ drawFive
 fromNumber 40 = drawTen ++ drawFifty
 fromNumber 400 = drawOneHundred ++ drawFiveHundred
@@ -22,19 +14,30 @@ fromNumber 900 = drawOneHundred ++ drawOneThousand
 
 fromNumber number =
     let 
-        numeral = takeMinorNumeral number
-        reminder = number - numeral
-    in fromNumber numeral ++ 
-        if isZero reminder then [] else fromNumber reminder
+        (romanSymbol, decimalNumber) = takeMinorNumeral number
+        reminder = number - decimalNumber
+    in romanSymbol ++ 
+        if isZeroOrLess reminder then [] else fromNumber reminder
 
-takeMinorNumeral :: Int -> Int
+takeMinorNumeral :: Int -> (String, Int)
 takeMinorNumeral number =
-    let romanNumeral = [1000, 500, 100, 50, 10, 5, 1]
-    in
-        head $ filter (number > ) romanNumeral
+        head 
+        $ filter ((number >=) . snd ) 
+        $ romanNumbers
 
-isZero :: Int -> Bool
-isZero = (== 0)
+isZeroOrLess :: Int -> Bool
+isZeroOrLess = (<= 0)
+
+romanNumbers :: Num a => [(String, a)]
+romanNumbers = [
+    (drawOneThousand, 1000),
+    (drawFiveHundred, 500),
+    (drawOneHundred, 100),
+    (drawFifty, 50),
+    (drawTen, 10),
+    (drawFive, 5),
+    (drawOne, 1)
+    ]
 
 drawOne = "I"
 drawOnes = draws drawOne
