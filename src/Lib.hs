@@ -26,8 +26,15 @@ fromNumber number
     | (number > 100) = drawOneHundred ++ (fromNumber $ number - 100)
     | (number > 50) = drawFifty ++ (fromNumber $ number - 50)
     | (number > 10) = drawTen ++ (fromNumber $ number - 10)
-    | (number > 5) = drawFive ++ drawOnes (number - 5)
+    | (number > 5) = let n = takeMinorNumeral number in fromNumber n ++ drawOnes (number - n)
     | otherwise = drawOnes number
+
+takeMinorNumeral :: Int -> Int
+takeMinorNumeral number =
+    let romanNumeral = [1000, 500, 100, 50, 10, 5]
+    in
+        head $ filter (number > ) romanNumeral
+
 
 drawOne = "I"
 drawOnes = draws drawOne
