@@ -7,7 +7,7 @@ fromNumber 1 = [drawI]
 fromNumber 5 = [drawV]
 fromNumber 10 = [drawX]
 fromNumber 50 = [drawL]
-fromNumber 100 = "C"
+fromNumber 100 = [drawC]
 fromNumber 500 = [drawD]
 fromNumber 1000 = [drawM]
 
@@ -20,12 +20,11 @@ fromNumber 9 = [drawI , drawX]
 fromNumber 90 = [drawI , drawC]
 fromNumber 900 = [drawI , drawM]
 
-fromNumber 19 = fromNumber 1 ++ fromNumber 20
-
 fromNumber number
-    | (number > 1) && (number < 5) = drawIs number
-    | (number > 5) && (number < 10) = drawV : drawIs (number - 5)
     | (number > 10) = drawX : (fromNumber $ number - 10)
+    | (number > 5) = drawV : drawIs (number - 5)
+    | (number > 1) = drawIs number
+    
     | otherwise = "WRONG_VALUE"
 
 drawI = 'I'
