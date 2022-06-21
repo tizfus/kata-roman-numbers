@@ -11,12 +11,12 @@ fromNumber :: Int -> String
 fromNumber 0 = []
 fromNumber number =
     let 
-        romanNumber = takeEgualOrLowerRomanNumber number
+        romanNumber = takeEqualOrLowerRomanNumber number
         reminder = number - decimal romanNumber
     in symbols romanNumber ++ fromNumber reminder
 
-takeEgualOrLowerRomanNumber :: Int -> RomanNumber
-takeEgualOrLowerRomanNumber number =
+takeEqualOrLowerRomanNumber :: Int -> RomanNumber
+takeEqualOrLowerRomanNumber number =
     head 
     $ filter (isEqualOrLower number) 
     $ romanNumbers
