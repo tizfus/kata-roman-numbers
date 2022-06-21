@@ -24,7 +24,16 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "VIII" $ fromNumber 8
             assertSymbol "IX" $ fromNumber 9
             assertSymbol "X" $ fromNumber 10
-            
+            assertSymbol "XI" $ fromNumber 11
+            assertSymbol "XII" $ fromNumber 12
+            assertSymbol "XIII" $ fromNumber 13
+            assertSymbol "XIV" $ fromNumber 14
+            assertSymbol "XV" $ fromNumber 15
+            assertSymbol "XVI" $ fromNumber 16
+            assertSymbol "XVII" $ fromNumber 17
+            assertSymbol "XVIII" $ fromNumber 18
+            assertSymbol "IXX" $ fromNumber 19
+            assertSymbol "XX" $ fromNumber 20
 
     ]
 
