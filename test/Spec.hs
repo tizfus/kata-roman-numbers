@@ -14,7 +14,7 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
             assertSymbol "D" $ fromNumber 500
             assertSymbol "M" $ fromNumber 1000
 
-        , testCase "count to 20" $ do
+        , testCase "count" $ do
             let numbers = [
                     ("I", 1)
                     , ("II", 2)
@@ -36,6 +36,12 @@ main = defaultMain $ testGroup "Roman numbers tests" $ [
                     , ("XVIII", 18)
                     , ("XIX", 19)
                     , ("XX", 20)
+                    , ("LXVI", 66)
+                    , ("LXXVII", 77)
+                    , ("LXXXII", 82)
+                    , ("CXXIII", 123)
+                    , ("DLVII", 557)
+                    , ("MMMMCCCLXXXII", 4382)
                     ]
             forM_ numbers (\(expected, number) -> assertSymbol expected $ fromNumber number)
 

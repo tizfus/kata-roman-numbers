@@ -21,6 +21,10 @@ fromNumber 90 = drawI ++ drawC
 fromNumber 900 = drawI ++ drawM
 
 fromNumber number
+    | (number > 1000) = drawM ++ (fromNumber $ number - 1000)
+    | (number > 500) = drawD ++ (fromNumber $ number - 500)
+    | (number > 100) = drawC ++ (fromNumber $ number - 100)
+    | (number > 50) = drawL ++ (fromNumber $ number - 50)
     | (number > 10) = drawX ++ (fromNumber $ number - 10)
     | (number > 5) = drawV ++ drawIs (number - 5)
     | otherwise = drawIs number
