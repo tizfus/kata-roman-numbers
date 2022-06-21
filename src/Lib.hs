@@ -21,14 +21,14 @@ fromNumber number =
 
 takeEgualOrLowerRomanNumber :: Int -> (String, Int)
 takeEgualOrLowerRomanNumber number =
-        head 
-        $ filter ((number >=) . snd ) 
-        $ romanNumbers
+    head 
+    $ filter ((number >=) . snd ) 
+    $ romanNumbers
 
 isZero :: Int -> Bool
 isZero = (== 0)
 
-romanNumbers :: Num a => [(String, a)]
+romanNumbers :: [(String, Int)]
 romanNumbers = [
     (drawOneThousand, 1000),
     (drawFiveHundred, 500),
