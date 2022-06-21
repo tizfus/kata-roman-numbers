@@ -17,7 +17,7 @@ fromNumber number =
         (romanSymbol, decimalNumber) = takeLowerRomanNumber number
         reminder = number - decimalNumber
     in romanSymbol ++ 
-        if isZeroOrLess reminder then [] else fromNumber reminder
+        if isZero reminder then [] else fromNumber reminder
 
 takeLowerRomanNumber :: Int -> (String, Int)
 takeLowerRomanNumber number =
@@ -25,8 +25,8 @@ takeLowerRomanNumber number =
         $ filter ((number >=) . snd ) 
         $ romanNumbers
 
-isZeroOrLess :: Int -> Bool
-isZeroOrLess = (<= 0)
+isZero :: Int -> Bool
+isZero = (== 0)
 
 romanNumbers :: Num a => [(String, a)]
 romanNumbers = [
